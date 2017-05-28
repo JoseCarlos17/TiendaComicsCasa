@@ -20,30 +20,37 @@ import javax.swing.JOptionPane;
  * @author AlumMati
  */
 public class Compras extends javax.swing.JFrame {
-    
-        static public ResultSet r;
-        static public Connection connec;
 
-    public Compras() throws SQLException{
-        
+    static public ResultSet r;
+    static public Connection connec;
+
+    public Compras() throws SQLException {
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SUPERHEROES COMICS");
-        String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
+        String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";
-        connec = DriverManager.getConnection(url,user,pass);
-        
+        connec = DriverManager.getConnection(url, user, pass);
+
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         String query = "select * from Compras CP";
         r = s.executeQuery(query);
         r.first();
-        
+
         Id.setText(r.getString("Identificador"));
         Fecha.setText(r.getString("Fecha"));
         FormaPago.setText(r.getString("FormaDePago"));
         IdCli.setText(r.getString("IdCliente"));
-        
+
+        Id.setEditable(false);
+        Fecha.setEditable(false);
+        FormaPago.setEditable(false);
+        IdCli.setEditable(false);
+        Insertar.setEnabled(false);
+        Cancelar.setEnabled(false);
+
     }
 
     /**
@@ -64,6 +71,14 @@ public class Compras extends javax.swing.JFrame {
         Fecha = new javax.swing.JTextField();
         FormaPago = new javax.swing.JTextField();
         IdCli = new javax.swing.JTextField();
+        Insertar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,6 +114,70 @@ public class Compras extends javax.swing.JFrame {
         getContentPane().add(FormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 210, -1));
         getContentPane().add(IdCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 210, -1));
 
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, -1));
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+
+        Siguiente.setText("Siguiente");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        Ultimo.setText("Último");
+        Ultimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UltimoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+
+        Primero.setText("Primero");
+        Primero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrimeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnteriorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/ironman.jpg"))); // NOI18N
@@ -108,16 +187,164 @@ public class Compras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
+        try {
+            if (r.previous()) {
+                Id.setText(r.getString("Identificador"));
+                Fecha.setText(r.getString("Fecha"));
+                FormaPago.setText(r.getString("FormaDePago"));
+                IdCli.setText(r.getString("IdCliente"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el primer registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_AnteriorActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        try {
+            if (r.next()) {
+                Id.setText(r.getString("Identificador"));
+                Fecha.setText(r.getString("Fecha"));
+                FormaPago.setText(r.getString("FormaDePago"));
+                IdCli.setText(r.getString("IdCliente"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el último registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
+        try {
+            if (r.last()) {
+                Id.setText(r.getString("Identificador"));
+                Fecha.setText(r.getString("Fecha"));
+                FormaPago.setText(r.getString("FormaDePago"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_UltimoActionPerformed
+
+    private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
+        try {
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Fecha.setText(r.getString("Fecha"));
+                FormaPago.setText(r.getString("FormaDePago"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_PrimeroActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        try {
+            String vId, vFecha, vFormaPago, vIdCli;
+            vId = Id.getText();
+            vFecha = Fecha.getText();
+            vFormaPago = FormaPago.getText();
+            vIdCli = IdCli.getText();
+            String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
+            String user = "root";
+            String pass = "";
+            Connection connection = DriverManager.getConnection(url, user, pass);
+            Statement s = connection.createStatement();
+            if (Id.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "No has insertado un identificador");
+            } else {
+                String query = "insert into Compras values ('" + vId + "','" + vFecha + "','" + vFormaPago + "','" + vIdCli + "')";
+                int resultado = s.executeUpdate(query);
+                String query2 = "select * from Compras";
+                r = s.executeQuery(query2);
+                r.first();
+            }
+            Anterior.setEnabled(true);
+            Nuevo.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        try {
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Anterior.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Volver.setEnabled(true);
+            Id.setEditable(false);
+            Fecha.setEditable(false);
+            FormaPago.setEditable(false);
+            IdCli.setEditable(false);
+            Nuevo.setEnabled(true);
+            
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Fecha.setText(r.getString("Fecha"));
+                FormaPago.setText(r.getString("FormaDePago"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+            JOptionPane.showMessageDialog(null, "Vas a registrar una nueva Compra. Pulsa Aceptar para continuar.");
+
+        Id.setEditable(true);
+        Fecha.setEditable(true);
+        FormaPago.setEditable(true);
+        IdCli.setEditable(true);
+        Anterior.setEnabled(false);
+        Nuevo.setEnabled(false);
+        Siguiente.setEnabled(false);
+        Primero.setEnabled(false);
+        Ultimo.setEnabled(false);
+        Insertar.setVisible(true);
+        Cancelar.setVisible(true);
+        Insertar.setEnabled(true);
+        Cancelar.setEnabled(true);
+        Id.setText(null);
+        Fecha.setText(null);
+        FormaPago.setText(null);
+        IdCli.setText(null);
+    }//GEN-LAST:event_NuevoActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+    dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Anterior;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Fecha;
     private javax.swing.JTextField FormaPago;
     private javax.swing.JTextField Id;
     private javax.swing.JTextField IdCli;
+    private javax.swing.JButton Insertar;
+    private javax.swing.JButton Nuevo;
+    private javax.swing.JButton Primero;
+    private javax.swing.JButton Siguiente;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

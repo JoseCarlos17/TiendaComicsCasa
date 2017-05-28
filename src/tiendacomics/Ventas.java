@@ -66,6 +66,14 @@ public class Ventas extends javax.swing.JFrame {
         Fecha = new javax.swing.JTextField();
         Historial = new javax.swing.JTextField();
         IdCli = new javax.swing.JTextField();
+        Siguiente = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Insertar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +81,7 @@ public class Ventas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setText("Ventas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 33, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Identificador");
@@ -119,6 +127,30 @@ public class Ventas extends javax.swing.JFrame {
         });
         getContentPane().add(IdCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 211, -1));
 
+        Siguiente.setText("Siguiente");
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
+
+        Ultimo.setText("Último");
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, -1));
+
+        Primero.setText("Primero");
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 80, -1));
+
+        Volver.setText("Volver");
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+
+        Insertar.setText("Insertar");
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+
+        Cancelar.setText("Cancelar");
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
+
+        Anterior.setText("Anterior");
+        getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/spiderman.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 390));
@@ -147,10 +179,18 @@ public class Ventas extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Anterior;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Fecha;
     private javax.swing.JTextField Historial;
     private javax.swing.JTextField Id;
     private javax.swing.JTextField IdCli;
+    private javax.swing.JButton Insertar;
+    private javax.swing.JButton Nuevo;
+    private javax.swing.JButton Primero;
+    private javax.swing.JButton Siguiente;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

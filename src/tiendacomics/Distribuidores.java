@@ -64,6 +64,14 @@ public class Distribuidores extends javax.swing.JFrame {
         Id = new javax.swing.JTextField();
         Nombre = new javax.swing.JTextField();
         Pais = new javax.swing.JTextField();
+        Insertar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,6 +100,71 @@ public class Distribuidores extends javax.swing.JFrame {
         getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 199, -1));
         getContentPane().add(Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 199, -1));
 
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 70, -1));
+
+        Siguiente.setText("Siguiente");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        Ultimo.setText("Último");
+        Ultimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UltimoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 70, -1));
+
+        Primero.setText("Primero");
+        Primero.setToolTipText("");
+        Primero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrimeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 80, -1));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 90, -1));
+
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnteriorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/batman.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 390));
@@ -99,15 +172,55 @@ public class Distribuidores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnteriorActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UltimoActionPerformed
+
+    private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrimeroActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NuevoActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Anterior;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Id;
+    private javax.swing.JButton Insertar;
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton Nuevo;
     private javax.swing.JTextField Pais;
+    private javax.swing.JButton Primero;
+    private javax.swing.JButton Siguiente;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

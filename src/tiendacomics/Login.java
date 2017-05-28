@@ -19,18 +19,16 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-        static public ResultSet r2;
-        static public Connection connec;
-    
+    static public ResultSet r2;
+    static public Connection connec;
+
     public Login() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SUPERHEROES COMICS");
 
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +70,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 100, 90));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/iconos/logout-512.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 100, 90));
         getContentPane().add(Passwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 340, 260, -1));
 
@@ -83,45 +86,47 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        
-            try {
-                boolean correcto=true;
-                
-                Class.forName("com.mysql.jdbc.Driver");
-                String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
-                connec = (java.sql.DriverManager.getConnection(url,"root",""));
-                Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                String query="SELECT * FROM Usuarios";
-                r2=s.executeQuery(query);
-                String usuario=User.getText();
-                char contrapass[] = Passwd.getPassword();
-                String contra = new String(contrapass);
-                while(r2.next()){
-                    if(usuario.equals(r2.getString("Nombre"))){
-                        if(contra.equals(r2.getString("Passwd"))){
-                            correcto=false;
-                        }
+
+        try {
+            boolean correcto = true;
+
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
+            connec = (java.sql.DriverManager.getConnection(url, "root", ""));
+            Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "SELECT * FROM Usuarios";
+            r2 = s.executeQuery(query);
+            String usuario = User.getText();
+            char contrapass[] = Passwd.getPassword();
+            String contra = new String(contrapass);
+            while (r2.next()) {
+                if (usuario.equals(r2.getString("Nombre"))) {
+                    if (contra.equals(r2.getString("Passwd"))) {
+                        correcto = false;
                     }
                 }
-                
-                
-                
-                if (correcto==false){
-                    Menu men = new Menu();
-                    men.setVisible(true);
-                    this.setVisible(false);
-                    men.setLocationRelativeTo(null);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Nombre o contraseña introducidos no válidos", "Login Error", JOptionPane.WARNING_MESSAGE);
-                    Passwd.setText("");
-                }    } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+
+            if (correcto == false) {
+                Menu men = new Menu();
+                men.setVisible(true);
+                this.setVisible(false);
+                men.setLocationRelativeTo(null);
+            } else {
+                JOptionPane.showMessageDialog(null, "Nombre o contraseña introducidos no válidos", "Login Error", JOptionPane.WARNING_MESSAGE);
+                Passwd.setText("");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_LoginActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

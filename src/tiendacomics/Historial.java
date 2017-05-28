@@ -66,6 +66,14 @@ public class Historial extends javax.swing.JFrame {
         IdFac = new javax.swing.JTextField();
         Cliente = new javax.swing.JTextField();
         Precio = new javax.swing.JTextField();
+        Cancelar = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Insertar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,7 +82,7 @@ public class Historial extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Historial");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 22, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,6 +108,70 @@ public class Historial extends javax.swing.JFrame {
         getContentPane().add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 218, -1));
         getContentPane().add(Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 218, -1));
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnteriorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        Siguiente.setText("Siguiente");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        Ultimo.setText("Último");
+        Ultimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UltimoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 70, -1));
+
+        Primero.setText("Primero");
+        Primero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrimeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 80, -1));
+
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/venom.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 390));
@@ -107,16 +179,56 @@ public class Historial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnteriorActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UltimoActionPerformed
+
+    private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrimeroActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NuevoActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Anterior;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Cliente;
     private javax.swing.JTextField Id;
     private javax.swing.JTextField IdFac;
+    private javax.swing.JButton Insertar;
+    private javax.swing.JButton Nuevo;
     private javax.swing.JTextField Precio;
+    private javax.swing.JButton Primero;
+    private javax.swing.JButton Siguiente;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -21,25 +21,25 @@ import javax.swing.JOptionPane;
  * @author AlumMati
  */
 public class Comics extends javax.swing.JFrame {
-    
-        static public ResultSet r;
-        static public Connection connec;
+
+    static public ResultSet r;
+    static public Connection connec;
 
     public Comics() throws SQLException {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SUPERHEROES COMICS");
-        String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
+        String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";
-        connec = DriverManager.getConnection(url,user,pass);
-        
+        connec = DriverManager.getConnection(url, user, pass);
+
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         String query = "select * from Comics CO";
         r = s.executeQuery(query);
         r.first();
-        
+
         Id.setText(r.getString("Identificador"));
         Nombre.setText(r.getString("Nombre"));
         Edicion.setText(r.getString("Edicion"));
@@ -48,6 +48,17 @@ public class Comics extends javax.swing.JFrame {
         Estado.setText(r.getString("Estado"));
         Distribuidor.setText(r.getString("Distribuidor"));
         Editorial.setText(r.getString("Editorial"));
+
+        Id.setEditable(false);
+        Nombre.setEditable(false);
+        Edicion.setEditable(false);
+        Coleccion.setEditable(false);
+        Autor.setEditable(false);
+        Estado.setEditable(false);
+        Distribuidor.setEditable(false);
+        Editorial.setEditable(false);
+        Insertar.setEnabled(false);
+        Cancelar.setEnabled(false);
     }
 
     /**
@@ -76,6 +87,14 @@ public class Comics extends javax.swing.JFrame {
         Estado = new javax.swing.JTextField();
         Distribuidor = new javax.swing.JTextField();
         Editorial = new javax.swing.JTextField();
+        Anterior = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Insertar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -183,6 +202,70 @@ public class Comics extends javax.swing.JFrame {
         });
         getContentPane().add(Editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 231, -1));
 
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnteriorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        Siguiente.setText("Siguiente");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        Ultimo.setText("Último");
+        Ultimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UltimoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 70, -1));
+
+        Primero.setText("Primero");
+        Primero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrimeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 80, -1));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, -1));
+
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/captainamerica.jpg"))); // NOI18N
@@ -224,20 +307,207 @@ public class Comics extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EditorialActionPerformed
 
+    private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
+        try {
+            if (r.previous()) {
+                Id.setText(r.getString("Identificador"));
+                Nombre.setText(r.getString("Nombre"));
+                Edicion.setText(r.getString("Edicion"));
+                Coleccion.setText(r.getString("Coleccion"));
+                Autor.setText(r.getString("Autor"));
+                Estado.setText(r.getString("Estado"));
+                Distribuidor.setText(r.getString("Distribuidor"));
+                Editorial.setText(r.getString("Editorial"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el primer registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_AnteriorActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        try {
+            if (r.next()) {
+                Id.setText(r.getString("Identificador"));
+                Nombre.setText(r.getString("Nombre"));
+                Edicion.setText(r.getString("Edicion"));
+                Coleccion.setText(r.getString("Coleccion"));
+                Autor.setText(r.getString("Autor"));
+                Estado.setText(r.getString("Estado"));
+                Distribuidor.setText(r.getString("Distribuidor"));
+                Editorial.setText(r.getString("Editorial"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el último registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
+        try {
+            if (r.last()) {
+                Id.setText(r.getString("Identificador"));
+                Nombre.setText(r.getString("Nombre"));
+                Edicion.setText(r.getString("Edicion"));
+                Coleccion.setText(r.getString("Coleccion"));
+                Autor.setText(r.getString("Autor"));
+                Estado.setText(r.getString("Estado"));
+                Distribuidor.setText(r.getString("Distribuidor"));
+                Editorial.setText(r.getString("Editorial"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_UltimoActionPerformed
+
+    private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
+        try {
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Nombre.setText(r.getString("Nombre"));
+                Edicion.setText(r.getString("Edicion"));
+                Coleccion.setText(r.getString("Coleccion"));
+                Autor.setText(r.getString("Autor"));
+                Estado.setText(r.getString("Estado"));
+                Distribuidor.setText(r.getString("Distribuidor"));
+                Editorial.setText(r.getString("Editorial"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_PrimeroActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        try {
+            String vId, vNombre, vEdicion, vColeccion, vAutor, vEstado, vDistribuidor, vEditorial;
+            vId = Id.getText();
+            vNombre = Nombre.getText();
+            vEdicion = Edicion.getText();
+            vColeccion = Coleccion.getText();
+            vAutor = Autor.getText();
+            vEstado = Estado.getText();
+            vDistribuidor = Distribuidor.getText();
+            vEditorial = Editorial.getText();
+            String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
+            String user = "root";
+            String pass = "";
+            Connection connection = DriverManager.getConnection(url, user, pass);
+            Statement s = connection.createStatement();
+            if (Id.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "No has insertado un Identificador");
+            } else {
+                String query = "insert into Comics values ('" + vId + "','" + vNombre + "','" + vEdicion + "','" + vColeccion + "','" + vAutor + "','" + vEstado + "','" + vDistribuidor + "','" + vEditorial + "')";
+                int resultado = s.executeUpdate(query);
+                String query2 = "select * from Comics";
+                r = s.executeQuery(query2);
+                r.first();
+            }
+
+            Anterior.setEnabled(true);
+            Nuevo.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        try {
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Anterior.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Volver.setEnabled(true);
+            Id.setEditable(false);
+            Nombre.setEditable(false);
+            Edicion.setEditable(false);
+            Coleccion.setEditable(false);
+            Autor.setEditable(false);
+            Estado.setEditable(false);
+            Distribuidor.setEditable(false);
+            Editorial.setEditable(false);
+            Nuevo.setEnabled(true);
+
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Nombre.setText(r.getString("Nombre"));
+                Edicion.setText(r.getString("Edicion"));
+                Coleccion.setText(r.getString("Coleccion"));
+                Autor.setText(r.getString("Autor"));
+                Estado.setText(r.getString("Estado"));
+                Distribuidor.setText(r.getString("Distribuidor"));
+                Editorial.setText(r.getString("Editorial"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Comics.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+        JOptionPane.showMessageDialog(null, "Vas a registrar un nuevo Comic. Pulsa Aceptar para continuar.");
+
+        Id.setEditable(true);
+        Nombre.setEditable(true);
+        Edicion.setEditable(true);
+        Coleccion.setEditable(true);
+        Autor.setEditable(true);
+        Estado.setEditable(true);
+        Distribuidor.setEditable(true);
+        Editorial.setEditable(true);
+        Anterior.setEnabled(false);
+        Nuevo.setEnabled(false);
+        Siguiente.setEnabled(false);
+        Primero.setEnabled(false);
+        Ultimo.setEnabled(false);
+        Insertar.setVisible(true);
+        Cancelar.setVisible(true);
+        Insertar.setEnabled(true);
+        Cancelar.setEnabled(true);
+        Id.setText(null);
+        Nombre.setText(null);
+        Edicion.setText(null);
+        Coleccion.setText(null);
+        Autor.setText(null);
+        Estado.setText(null);
+        Distribuidor.setText(null);
+        Editorial.setText(null);
+    }//GEN-LAST:event_NuevoActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Anterior;
     private javax.swing.JTextField Autor;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Coleccion;
     private javax.swing.JTextField Distribuidor;
     private javax.swing.JTextField Edicion;
     private javax.swing.JTextField Editorial;
     private javax.swing.JTextField Estado;
     private javax.swing.JTextField Id;
+    private javax.swing.JButton Insertar;
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton Nuevo;
+    private javax.swing.JButton Primero;
+    private javax.swing.JButton Siguiente;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
