@@ -290,7 +290,7 @@ public class Compras extends javax.swing.JFrame {
             FormaPago.setEditable(false);
             IdCli.setEditable(false);
             Nuevo.setEnabled(true);
-            
+
             if (r.first()) {
                 Id.setText(r.getString("Identificador"));
                 Fecha.setText(r.getString("Fecha"));
@@ -303,7 +303,7 @@ public class Compras extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
-            JOptionPane.showMessageDialog(null, "Vas a registrar una nueva Compra. Pulsa Aceptar para continuar.");
+        JOptionPane.showMessageDialog(null, "Vas a registrar una nueva Compra. Pulsa Aceptar para continuar.");
 
         Id.setEditable(true);
         Fecha.setEditable(true);
@@ -325,7 +325,7 @@ public class Compras extends javax.swing.JFrame {
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-    dispose();
+        dispose();
     }//GEN-LAST:event_VolverActionPerformed
 
     /**

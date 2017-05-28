@@ -20,28 +20,28 @@ import javax.swing.JOptionPane;
  * @author AlumMati
  */
 public class Facturas extends javax.swing.JFrame {
-    
-        static public ResultSet r;
-        static public Connection connec;
+
+    static public ResultSet r;
+    static public Connection connec;
 
     /**
      * Creates new form Facturas
      */
-    public Facturas() throws SQLException{
-        
+    public Facturas() throws SQLException {
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SUPERHEROES COMICS");
-        String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
+        String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";
-        connec = DriverManager.getConnection(url,user,pass);
-        
+        connec = DriverManager.getConnection(url, user, pass);
+
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         String query = "select * from Facturas F";
         r = s.executeQuery(query);
         r.first();
-        
+
         Id.setText(r.getString("Identificador"));
         Articulo.setText(r.getString("Articulos"));
         Cantidad.setText(r.getString("Cantidad"));
@@ -49,7 +49,17 @@ public class Facturas extends javax.swing.JFrame {
         IVA.setText(r.getString("IVA"));
         FechaFac.setText(r.getString("FechaFactura"));
         IdCli.setText(r.getString("IdCliente"));
-        
+
+        Id.setEditable(false);
+        Articulo.setEditable(false);
+        Cantidad.setEditable(false);
+        Precio.setEditable(false);
+        IVA.setEditable(false);
+        FechaFac.setEditable(false);
+        IdCli.setEditable(false);
+        Insertar.setEnabled(false);
+        Cancelar.setEnabled(false);
+
     }
 
     /**
@@ -200,41 +210,176 @@ public class Facturas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (r.previous()) {
+                Id.setText(r.getString("Identificador"));
+                Articulo.setText(r.getString("Articulos"));
+                Cantidad.setText(r.getString("Cantidad"));
+                Precio.setText(r.getString("Precio"));
+                IVA.setText(r.getString("IVA"));
+                FechaFac.setText(r.getString("FechaFactura"));
+                IdCli.setText(r.getString("IdCliente"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el primer registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AnteriorActionPerformed
 
     private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (r.next()) {
+                Id.setText(r.getString("Identificador"));
+                Articulo.setText(r.getString("Articulos"));
+                Cantidad.setText(r.getString("Cantidad"));
+                Precio.setText(r.getString("Precio"));
+                IVA.setText(r.getString("IVA"));
+                FechaFac.setText(r.getString("FechaFactura"));
+                IdCli.setText(r.getString("IdCliente"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el último registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_SiguienteActionPerformed
 
     private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (r.last()) {
+                Id.setText(r.getString("Identificador"));
+                Articulo.setText(r.getString("Articulos"));
+                Cantidad.setText(r.getString("Cantidad"));
+                Precio.setText(r.getString("Precio"));
+                IVA.setText(r.getString("IVA"));
+                FechaFac.setText(r.getString("FechaFactura"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_UltimoActionPerformed
 
     private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Articulo.setText(r.getString("Articulos"));
+                Cantidad.setText(r.getString("Cantidad"));
+                Precio.setText(r.getString("Precio"));
+                IVA.setText(r.getString("IVA"));
+                FechaFac.setText(r.getString("FechaFactura"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_PrimeroActionPerformed
 
     private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
-        // TODO add your handling code here:
+        try {
+            String vId, vArticulo, vCantidad, vPrecio, vIVA, vFechaFac, vIdCli;
+            vId = Id.getText();
+            vArticulo = Articulo.getText();
+            vCantidad = Cantidad.getText();
+            vPrecio = Precio.getText();
+            vIVA = IVA.getText();
+            vFechaFac = FechaFac.getText();
+            vIdCli = IdCli.getText();
+            String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
+            String user = "root";
+            String pass = "";
+            Connection connection = DriverManager.getConnection(url, user, pass);
+            Statement s = connection.createStatement();
+            if (Id.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "No has insertado un identificador");
+            } else {
+                String query = "insert into Facturas values ('" + vId + "','" + vArticulo + "','" + vCantidad + "','" + vPrecio + "','" + vIVA + "','" + vFechaFac + "','" + vIdCli + "')";
+                int resultado = s.executeUpdate(query);
+                String query2 = "select * from Facturas";
+                r = s.executeQuery(query2);
+                r.first();
+            }
+            Anterior.setEnabled(true);
+            Nuevo.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_InsertarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        // TODO add your handling code here:
+        try {
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Anterior.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Volver.setEnabled(true);
+            Id.setEditable(false);
+            Articulo.setEditable(false);
+            Cantidad.setEditable(false);
+            Precio.setEditable(false);
+            IVA.setEditable(false);
+            FechaFac.setEditable(false);
+            IdCli.setEditable(false);
+            Nuevo.setEnabled(true);
+
+            if (r.first()) {
+                Id.setText(r.getString("Identificador"));
+                Articulo.setText(r.getString("Articulos"));
+                Cantidad.setText(r.getString("Cantidad"));
+                Precio.setText(r.getString("Precio"));
+                IVA.setText(r.getString("IVA"));
+                FechaFac.setText(r.getString("FechaFactura"));
+                IdCli.setText(r.getString("IdCliente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Vas a registrar una nueva Factura. Pulsa Aceptar para continuar.");
+
+        Id.setEditable(true);
+        Articulo.setEditable(true);
+        Cantidad.setEditable(true);
+        Precio.setEditable(true);
+        IVA.setEditable(true);
+        FechaFac.setEditable(true);
+        IdCli.setEditable(true);
+        Anterior.setEnabled(false);
+        Nuevo.setEnabled(false);
+        Siguiente.setEnabled(false);
+        Primero.setEnabled(false);
+        Ultimo.setEnabled(false);
+        Insertar.setVisible(true);
+        Cancelar.setVisible(true);
+        Insertar.setEnabled(true);
+        Cancelar.setEnabled(true);
+        Id.setText(null);
+        Articulo.setText(null);
+        Cantidad.setText(null);
+        Precio.setText(null);
+        IVA.setText(null);
+        FechaFac.setText(null);
+        IdCli.setText(null);
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_VolverActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anterior;
