@@ -42,9 +42,9 @@ public class Editorial extends javax.swing.JFrame {
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
+        Id.setText(r.getString("Identificador"));
         Nombre.setText(r.getString("Nombre"));
-        Pais.setText(r.getString("Apellidos"));
+        Pais.setText(r.getString("Pais"));
     }
 
     /**

@@ -37,14 +37,14 @@ public class Comics extends javax.swing.JFrame {
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
+        Id.setText(r.getString("Identificador"));
         Nombre.setText(r.getString("Nombre"));
-        Edicion.setText(r.getString("Apellidos"));
-        Coleccion.setText(r.getString("FechaNacimiento"));
-        Autor.setText(r.getString("FechaCliente"));
-        Estado.setText(r.getString("HistorialPedidos"));
-        Distribuidor.setText(r.getString("HistorialPedidos"));
-        Editorial.setText(r.getString("HistorialPedidos"));
+        Edicion.setText(r.getString("Edicion"));
+        Coleccion.setText(r.getString("Coleccion"));
+        Autor.setText(r.getString("Autor"));
+        Estado.setText(r.getString("Estado"));
+        Distribuidor.setText(r.getString("Distribuidor"));
+        Editorial.setText(r.getString("Editorial"));
     }
 
     /**

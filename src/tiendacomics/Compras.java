@@ -37,10 +37,10 @@ public class Compras extends javax.swing.JFrame {
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
-        Fecha.setText(r.getString("Nombre"));
-        FormaPago.setText(r.getString("Apellidos"));
-        IdCli.setText(r.getString("FechaNacimiento"));
+        Id.setText(r.getString("Identificador"));
+        Fecha.setText(r.getString("Fecha"));
+        FormaPago.setText(r.getString("FormaDePago"));
+        IdCli.setText(r.getString("IdCliente"));
         
     }
 

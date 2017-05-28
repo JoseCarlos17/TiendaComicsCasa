@@ -41,13 +41,13 @@ public class Facturas extends javax.swing.JFrame {
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
-        Articulo.setText(r.getString("Nombre"));
-        Cantidad.setText(r.getString("Apellidos"));
-        Precio.setText(r.getString("FechaNacimiento"));
-        IVA.setText(r.getString("FechaCliente"));
-        FechaFac.setText(r.getString("HistorialPedidos"));
-        IdCli.setText(r.getString("HistorialPedidos"));
+        Id.setText(r.getString("Identificador"));
+        Articulo.setText(r.getString("Articulos"));
+        Cantidad.setText(r.getString("Cantidad"));
+        Precio.setText(r.getString("Precio"));
+        IVA.setText(r.getString("IVA"));
+        FechaFac.setText(r.getString("FechaFactura"));
+        IdCli.setText(r.getString("IdCliente"));
         
     }
 

@@ -37,14 +37,14 @@ public class Historial extends javax.swing.JFrame {
         connec = DriverManager.getConnection(url,user,pass);
         
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String query = "select * from Facturas F";
+        String query = "select * from Historial H";
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
-        IdFac.setText(r.getString("Nombre"));
-        Cliente.setText(r.getString("Apellidos"));
-        Precio.setText(r.getString("FechaNacimiento"));
+        Id.setText(r.getString("Identificador"));
+        IdFac.setText(r.getString("IdFactura"));
+        Cliente.setText(r.getString("Cliente"));
+        Precio.setText(r.getString("Precio"));
     }
 
     /**

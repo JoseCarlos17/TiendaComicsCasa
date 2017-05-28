@@ -37,14 +37,14 @@ public class Ventas extends javax.swing.JFrame {
         connec = DriverManager.getConnection(url,user,pass);
         
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String query = "select * from Facturas F";
+        String query = "select * from Ventas V";
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
-        Fecha.setText(r.getString("Nombre"));
-        Historial.setText(r.getString("Apellidos"));
-        IdCli.setText(r.getString("FechaNacimiento"));
+        Id.setText(r.getString("Identificador"));
+        Fecha.setText(r.getString("Fecha"));
+        Historial.setText(r.getString("Historial"));
+        IdCli.setText(r.getString("IdCliente"));
     }
 
     /**

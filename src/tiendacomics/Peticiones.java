@@ -37,16 +37,16 @@ public class Peticiones extends javax.swing.JFrame {
         connec = DriverManager.getConnection(url,user,pass);
         
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String query = "select * from Facturas F";
+        String query = "select * from Peticiones PE";
         r = s.executeQuery(query);
         r.first();
         
-        Id.setText(r.getString("Codigo"));
+        Id.setText(r.getString("Identificador"));
         Nombre.setText(r.getString("Nombre"));
         Apellido.setText(r.getString("Apellidos"));
-        Fecha.setText(r.getString("FechaNacimiento"));
-        Cliente.setText(r.getString("FechaCliente"));
-        Comic.setText(r.getString("HistorialPedidos"));
+        Fecha.setText(r.getString("Fecha"));
+        Cliente.setText(r.getString("Cliente"));
+        Comic.setText(r.getString("Comic"));
     }
 
     /**
