@@ -27,6 +27,8 @@ public class Compras extends javax.swing.JFrame {
     public Compras() throws SQLException{
         
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("SUPERHEROES COMICS");
         String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";

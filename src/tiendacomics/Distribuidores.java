@@ -30,7 +30,8 @@ public class Distribuidores extends javax.swing.JFrame {
     public Distribuidores() throws SQLException {
         
         initComponents();
-        
+        this.setLocationRelativeTo(null);
+        this.setTitle("SUPERHEROES COMICS");
         String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";

@@ -23,26 +23,28 @@ public class Clientes extends javax.swing.JFrame {
 
     static public ResultSet r;
     static public Connection connec;
-    
+
     public Clientes() throws SQLException {
         initComponents();
-        String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
+        this.setLocationRelativeTo(null);
+        this.setTitle("SUPERHEROES COMICS");
+        String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";
-        connec = DriverManager.getConnection(url,user,pass);
-        
+        connec = DriverManager.getConnection(url, user, pass);
+
         Statement s = (Statement) connec.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         String query = "select * from Clientes C";
         r = s.executeQuery(query);
         r.first();
-        
+
         Codigo.setText(r.getString("Codigo"));
         Nombre.setText(r.getString("Nombre"));
         Apellidos.setText(r.getString("Apellidos"));
         FechaNac.setText(r.getString("FechaNacimiento"));
         FechaCli.setText(r.getString("FechaCliente"));
         HistorialPed.setText(r.getString("HistorialPedidos"));
-        
+
     }
 
     /**
@@ -70,7 +72,12 @@ public class Clientes extends javax.swing.JFrame {
         HistorialPed = new javax.swing.JTextField();
         Siguiente = new javax.swing.JButton();
         Anterior = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Primero = new javax.swing.JButton();
+        Ultimo = new javax.swing.JButton();
+        Insertar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Nuevo = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,7 +125,12 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(HistorialPed, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 200, -1));
 
         Siguiente.setText("Siguiente");
-        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         Anterior.setText("Anterior");
         Anterior.addActionListener(new java.awt.event.ActionListener() {
@@ -128,8 +140,54 @@ public class Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
-        jButton3.setText("jButton1");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        Primero.setText("Primero");
+        Primero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrimeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 80, -1));
+
+        Ultimo.setText("Último");
+        Ultimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UltimoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 70, -1));
+
+        Insertar.setText("Insertar");
+        Insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+
+        Cancelar.setText("Cancelar");
+        Cancelar.setToolTipText("");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
+
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+
+        Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/wolverine.jpg"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -143,8 +201,153 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_CodigoActionPerformed
 
     private void AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (r.previous()) {
+                Codigo.setText(r.getString("Codigo"));
+                Nombre.setText(r.getString("Nombre"));
+                Apellidos.setText(r.getString("Apellidos"));
+                FechaNac.setText(r.getString("FechaNacimiento"));
+                FechaCli.setText(r.getString("FechaCliente"));
+                HistorialPed.setText(r.getString("HistorialPedidos"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el primer registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AnteriorActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        try {
+            if (r.next()) {
+                Codigo.setText(r.getString("Codigo"));
+                Nombre.setText(r.getString("Nombre"));
+                Apellidos.setText(r.getString("Apellidos"));
+                FechaNac.setText(r.getString("FechaNacimiento"));
+                FechaCli.setText(r.getString("FechaCliente"));
+                HistorialPed.setText(r.getString("HistorialPedidos"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Estás en el último registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UltimoActionPerformed
+        try {
+            if (r.last()) {
+                Codigo.setText(r.getString("Codigo"));
+                Nombre.setText(r.getString("Nombre"));
+                Apellidos.setText(r.getString("Apellidos"));
+                FechaNac.setText(r.getString("FechaNacimiento"));
+                FechaCli.setText(r.getString("FechaCliente"));
+                HistorialPed.setText(r.getString("HistorialPedidos"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_UltimoActionPerformed
+
+    private void PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimeroActionPerformed
+        try {
+            if (r.first()) {
+                Codigo.setText(r.getString("Codigo"));
+                Nombre.setText(r.getString("Nombre"));
+                Apellidos.setText(r.getString("Apellidos"));
+                FechaNac.setText(r.getString("FechaNacimiento"));
+                FechaCli.setText(r.getString("FechaCliente"));
+                HistorialPed.setText(r.getString("HistorialPedidos"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_PrimeroActionPerformed
+
+    private void InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarActionPerformed
+        try {
+            String vCodigo, vNombre, vApellidos, vFechaNac, vFechaCli, vHistorialPed;
+            vCodigo = Codigo.getText();
+            vNombre = Nombre.getText();
+            vApellidos = Apellidos.getText();
+            vFechaNac = FechaNac.getText();
+            vFechaCli = FechaCli.getText();
+            vHistorialPed = HistorialPed.getText();
+            String url = "jdbc:mysql://localhost:3306/bd_aplicacion";
+            String user = "root";
+            String pass = "";
+            Connection connection = DriverManager.getConnection(url, user, pass);
+            Statement s = connection.createStatement();
+            if (Codigo.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "No has insertado un código");
+            } else {
+                String query = "insert into clientes values ('" + vCodigo + "','" + vNombre + "','" + vApellidos + "','" + vFechaNac + "','" + vFechaCli + "','" + vHistorialPed + "')";
+                int resultado = s.executeUpdate(query);
+                String query2 = "select * from Clientes";
+                r = s.executeQuery(query2);
+                r.first();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_InsertarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        try {
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Anterior.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Volver.setEnabled(true);
+            Codigo.setEditable(false);
+            Nombre.setEditable(false);
+            Apellidos.setEditable(false);
+            FechaNac.setEditable(false);
+            FechaCli.setEditable(false);
+            HistorialPed.setEditable(false);
+
+            if (r.first()) {
+                Codigo.setText(r.getString("Codigo"));
+                Nombre.setText(r.getString("Nombre"));
+                Apellidos.setText(r.getString("Apellidos"));
+                FechaNac.setText(r.getString("FechaNacimiento"));
+                FechaCli.setText(r.getString("FechaCliente"));
+                HistorialPed.setText(r.getString("HistorialPedidos"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+
+
+            JOptionPane.showMessageDialog(null, "Vas a registrar un nuevo Cliente. Pulsa Aceptar para continuar.");
+
+            Codigo.setEditable(true);
+            Anterior.setEnabled(false);
+            Nuevo.setEnabled(false);
+            Siguiente.setEnabled(false);
+            Primero.setEnabled(false);
+            Ultimo.setEnabled(false);
+            Insertar.setVisible(true);
+            Cancelar.setVisible(true);
+            Insertar.setEnabled(true);
+            Cancelar.setEnabled(true);
+            Codigo.setText(null);
+            Nombre.setText(null);
+            Apellidos.setText(null);
+            FechaNac.setText(null);
+            FechaCli.setText(null);
+            HistorialPed.setText(null);
+
+    }//GEN-LAST:event_NuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,13 +386,18 @@ public class Clientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anterior;
     private javax.swing.JTextField Apellidos;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField Codigo;
     private javax.swing.JTextField FechaCli;
     private javax.swing.JTextField FechaNac;
     private javax.swing.JTextField HistorialPed;
+    private javax.swing.JButton Insertar;
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton Nuevo;
+    private javax.swing.JButton Primero;
     private javax.swing.JButton Siguiente;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Ultimo;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

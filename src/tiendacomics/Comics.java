@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,8 @@ public class Comics extends javax.swing.JFrame {
     public Comics() throws SQLException {
         
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("SUPERHEROES COMICS");
         String url ="jdbc:mysql://localhost:3306/bd_aplicacion";
         String user = "root";
         String pass = "";
