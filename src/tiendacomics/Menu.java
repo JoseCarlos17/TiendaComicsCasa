@@ -55,7 +55,7 @@ public class Menu extends javax.swing.JFrame {
                 ComprasActionPerformed(evt);
             }
         });
-        getContentPane().add(Compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 110, 50));
+        getContentPane().add(Compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 130, 50));
 
         Distribuidores.setText("Distribuidores");
         Distribuidores.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +63,7 @@ public class Menu extends javax.swing.JFrame {
                 DistribuidoresActionPerformed(evt);
             }
         });
-        getContentPane().add(Distribuidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 110, 50));
+        getContentPane().add(Distribuidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 130, 50));
 
         Editorial.setText("Editorial");
         Editorial.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class Menu extends javax.swing.JFrame {
                 EditorialActionPerformed(evt);
             }
         });
-        getContentPane().add(Editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 110, 50));
+        getContentPane().add(Editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 130, 50));
 
         Facturas.setText("Facturas");
         Facturas.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class Menu extends javax.swing.JFrame {
                 FacturasActionPerformed(evt);
             }
         });
-        getContentPane().add(Facturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 110, 50));
+        getContentPane().add(Facturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 130, 50));
 
         Historial.setText("Historial");
         Historial.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class Menu extends javax.swing.JFrame {
                 HistorialActionPerformed(evt);
             }
         });
-        getContentPane().add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 110, 50));
+        getContentPane().add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 130, 50));
 
         Peticiones.setText("Peticiones");
         Peticiones.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class Menu extends javax.swing.JFrame {
                 PeticionesActionPerformed(evt);
             }
         });
-        getContentPane().add(Peticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 110, 50));
+        getContentPane().add(Peticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 130, 50));
 
         Desconexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/iconos/logout-512.png"))); // NOI18N
         Desconexion.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class Menu extends javax.swing.JFrame {
                 VentasActionPerformed(evt);
             }
         });
-        getContentPane().add(Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 110, 50));
+        getContentPane().add(Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, 50));
 
         Comics.setText("Cómics");
         Comics.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class Menu extends javax.swing.JFrame {
                 ComicsActionPerformed(evt);
             }
         });
-        getContentPane().add(Comics, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, 50));
+        getContentPane().add(Comics, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 130, 50));
 
         Clientes.setText("Clientes");
         Clientes.setBorder(null);
@@ -128,7 +128,7 @@ public class Menu extends javax.swing.JFrame {
                 ClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 110, 50));
+        getContentPane().add(Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 130, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tiendacomics/imagenes/menuflash.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
