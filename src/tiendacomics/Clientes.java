@@ -45,6 +45,15 @@ public class Clientes extends javax.swing.JFrame {
         FechaCli.setText(r.getString("FechaCliente"));
         HistorialPed.setText(r.getString("HistorialPedidos"));
 
+        Codigo.setEditable(false);
+        Nombre.setEditable(false);
+        Apellidos.setEditable(false);
+        FechaNac.setEditable(false);
+        FechaCli.setEditable(false);
+        HistorialPed.setEditable(false);
+        Insertar.setEnabled(false);
+        Cancelar.setEnabled(false);
+
     }
 
     /**
@@ -287,6 +296,15 @@ public class Clientes extends javax.swing.JFrame {
                 r = s.executeQuery(query2);
                 r.first();
             }
+
+            Anterior.setEnabled(true);
+            Nuevo.setEnabled(true);
+            Siguiente.setEnabled(true);
+            Primero.setEnabled(true);
+            Ultimo.setEnabled(true);
+            Insertar.setEnabled(false);
+            Cancelar.setEnabled(false);
+
         } catch (SQLException ex) {
             Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -307,6 +325,7 @@ public class Clientes extends javax.swing.JFrame {
             FechaNac.setEditable(false);
             FechaCli.setEditable(false);
             HistorialPed.setEditable(false);
+            Nuevo.setEnabled(true);
 
             if (r.first()) {
                 Codigo.setText(r.getString("Codigo"));
@@ -327,25 +346,29 @@ public class Clientes extends javax.swing.JFrame {
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
 
+        JOptionPane.showMessageDialog(null, "Vas a registrar un nuevo Cliente. Pulsa Aceptar para continuar.");
 
-            JOptionPane.showMessageDialog(null, "Vas a registrar un nuevo Cliente. Pulsa Aceptar para continuar.");
-
-            Codigo.setEditable(true);
-            Anterior.setEnabled(false);
-            Nuevo.setEnabled(false);
-            Siguiente.setEnabled(false);
-            Primero.setEnabled(false);
-            Ultimo.setEnabled(false);
-            Insertar.setVisible(true);
-            Cancelar.setVisible(true);
-            Insertar.setEnabled(true);
-            Cancelar.setEnabled(true);
-            Codigo.setText(null);
-            Nombre.setText(null);
-            Apellidos.setText(null);
-            FechaNac.setText(null);
-            FechaCli.setText(null);
-            HistorialPed.setText(null);
+        Codigo.setEditable(true);
+        Nombre.setEditable(true);
+        Apellidos.setEditable(true);
+        FechaNac.setEditable(true);
+        FechaCli.setEditable(true);
+        HistorialPed.setEditable(true);
+        Anterior.setEnabled(false);
+        Nuevo.setEnabled(false);
+        Siguiente.setEnabled(false);
+        Primero.setEnabled(false);
+        Ultimo.setEnabled(false);
+        Insertar.setVisible(true);
+        Cancelar.setVisible(true);
+        Insertar.setEnabled(true);
+        Cancelar.setEnabled(true);
+        Codigo.setText(null);
+        Nombre.setText(null);
+        Apellidos.setText(null);
+        FechaNac.setText(null);
+        FechaCli.setText(null);
+        HistorialPed.setText(null);
 
     }//GEN-LAST:event_NuevoActionPerformed
 
